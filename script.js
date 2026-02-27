@@ -1,3 +1,22 @@
+// Theme Toggle
+const toggleBtn = document.getElementById('theme-toggle');
+
+toggleBtn.addEventListener('click', function() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    
+    if (currentTheme === 'light') {
+        html.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = 'Light Mode';
+        toggleBtn.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+        html.setAttribute('data-theme', 'light');
+        toggleBtn.textContent = 'Dark Mode';
+        toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+    }
+});
+
+// Specificity Calculation
 function calculateSpecificity(selector) {
     const aMatches = selector.match(/#[\w-]+/g) || [];
     const a = aMatches.length;
@@ -49,10 +68,36 @@ function runCalculation() {
     
     const result = calculateSpecificity(selector);
     document.getElementById('result').innerHTML = `
-    <p><strong>Score:</strong> ${result.score}</p>
-    <p><strong>A (IDs):</strong> ${result.aContributors.join(', ') || 'none'}</p>
-    <p><strong>B (Classes/Pseudo-classes):</strong> ${result.bContributors.join(', ') || 'none'}</p>
-    <p><strong>C (Elements/Pseudo-elements):</strong> ${result.cContributors.join(', ') || 'none'}</p>
+    <p class="score">Score: <span>${result.score}</span></p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-column">A</div>
+            <div class="card-label">IDs</div>
+            <div class="card-contributors">
+                ${result.aContributors.length 
+                    ? result.aContributors.map(c => `<span>${c}</span>`).join('') 
+                    : 'none'}
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-column">B</div>
+            <div class="card-label">Classes & Pseudo-classes</div>
+            <div class="card-contributors">
+                ${result.bContributors.length 
+                    ? result.bContributors.map(c => `<span>${c}</span>`).join('') 
+                    : 'none'}
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-column">C</div>
+            <div class="card-label">Elements & Pseudo-elements</div>
+            <div class="card-contributors">
+                ${result.cContributors.length 
+                    ? result.cContributors.map(c => `<span>${c}</span>`).join('') 
+                    : 'none'}
+            </div>
+        </div>
+    </div>
 `;
 }
 

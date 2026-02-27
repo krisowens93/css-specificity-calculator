@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Specificity Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <h1>CSS Specificity Calculator</h1>
-        <input type="text" id="selector-input" placeholder="Enter a CSS selector...">
-        <button id="calculate-btn">Calculate</button>
-        <div id="result"></div>
+    <div class="container">
+
+        <header class="header">
+            <h1 class="heading">CSS Specificity Calculator</h1>
+            <button class="toggle" id="theme-toggle" aria-label="Switch to dark mode">
+                Dark Mode
+            </button>
+        </header>
+
+        <p class="description">Enter a CSS selector to calculate its specificity score and see a breakdown by column.</p>
+
+        <div class="input-row">
+            <input type="text" id="selector-input" placeholder="e.g. #header .nav a:hover" aria-label="CSS selector input" />
+            <button class="calculate-btn" id="calculate-btn">Calculate</button>
+        </div>
+
+        <div id="result" class="result" aria-live="polite">
+            <!-- results render here -->
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>

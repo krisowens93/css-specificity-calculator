@@ -1,0 +1,276 @@
+/* ============================================================
+   TOKENS - Light Mode (Default)
+============================================================ */
+
+:root {
+    --bg: #F3ECE8;
+    --surface: #EDE4DE;
+    --text-primary: #2C1F14;
+    --text-secondary: #6D5F50;
+    --accent: #81668F;
+    --accent-hover: #644F6E;
+    --border: rgba(144, 118, 157, 0.3);
+    --shadow: rgba(144, 118, 157, 0.2);
+}
+
+/* ============================================================
+   TOKENS - Dark Mode
+============================================================ */
+
+[data-theme="dark"] {
+    --bg: #2C1F14;
+    --surface: #3D2E20;
+    --text-primary: #F3ECE8;
+    --text-secondary: #C4B5A8;
+    --accent: #D6CCD9;
+    --accent-hover: #9F88AA;
+    --border: rgba(214, 204, 217, 0.2);
+    --shadow: rgba(214, 204, 217, 0.1);
+}
+
+/* ============================================================
+   BASE
+============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+.container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+}
+
+
+.heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 65ch;
+}
+
+/* ============================================================
+   TOGGLE BUTTON
+============================================================ */
+
+.toggle {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggle:hover {
+    background-color: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 0 3px var(--shadow);
+}
+
+.toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   INPUT ROW
+============================================================ */
+
+.input-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+    .input-row {
+        flex-direction: column;
+    }
+}
+
+#selector-input {
+    flex: 1;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#selector-input:-webkit-autofill,
+#selector-input:-webkit-autofill:hover,
+#selector-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--surface) inset !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    caret-color: var(--text-primary);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+#selector-input::placeholder {
+    color: var(--text-secondary);
+}
+
+#selector-input:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--shadow);
+}
+
+.calculate-btn {
+    background-color: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media screen and (max-width: 767px) {
+    .calculate-btn {
+        width: 100%;
+    }
+}
+
+.calculate-btn:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 0 0 3px var(--shadow);
+}
+
+.calculate-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   RESULT
+============================================================ */
+
+.result {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+}
+
+.score span {
+    color: var(--accent);
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+.card-column {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.card-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+.card-contributors {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+.card-contributors span {
+    display: inline-block;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.4rem;
+    margin: 0.15rem;
+    font-size: 0.825rem;
+}
